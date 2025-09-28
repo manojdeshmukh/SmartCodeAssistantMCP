@@ -51,50 +51,46 @@ SmartCodeAssistantMCP/
 
 ## Current Implementation Status
 
-The Smart Code Assistant MCP Server is now **fully functional** with the following capabilities:
+The Smart Code Assistant MCP Server is **fully functional** and ready to use with Claude Desktop!
 
-### ✅ Implemented Tools
-- **`analyze_project`** - Comprehensive .NET solution/project analysis
-- **`find_dependencies`** - NuGet dependency discovery and analysis
+### ✅ Available Tools
+- **`analyze_project`** - Analyze .NET project structure and metrics
+- **`find_dependencies`** - Discover and analyze NuGet dependencies
 - **`check_code_quality`** - Basic code quality checks and recommendations
-- **`generate_readme`** - Auto-generate comprehensive project README files
-- **`extract_api_docs`** - Extract API documentation from XML comments
-- **`generate_project_summary`** - Generate quick project overview and metrics
-
-### ✅ Implemented Resources
-- **`project://structure`** - Access to project file structure and organization
-- **`project://dependencies`** - Access to project dependencies and package information
+- **`generate_project_summary`** - Generate project overview with key metrics
 
 ### ✅ Features
-- Full .NET 9 support with modern C# features
-- Roslyn-based code analysis
-- Comprehensive project metrics
-- Markdown documentation generation
-- JSON-structured output for programmatic access
-- Robust error handling and logging
+- Fast, reliable analysis without complex dependencies
+- Claude Desktop integration ready
+- JSON-structured output for easy consumption
+- Comprehensive error handling and logging
 
-## Getting Started
+## 🚀 Quick Start
 
-1. **Prerequisites**: .NET 9 SDK
-2. **Clone and setup project**:
+1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/manojdeshmukh/SmartCodeAssistantMCP.git
    cd SmartCodeAssistantMCP
    ```
-3. **Build the project**:
+
+2. **Build the project**:
    ```bash
    cd src/SmartCodeAssistantMCP
    dotnet build
    ```
-4. **Run the server**:
+
+3. **Start the server**:
    ```bash
    dotnet run
    ```
-5. **Test the server**:
-   ```bash
-   ./test-server.sh
-   ```
-6. **Connect with MCP client** and start using the tools!
+
+4. **Configure Claude Desktop** - See [Claude Desktop Integration Guide](./docs/claude-desktop-integration.md)
+
+## 📚 Documentation
+
+- **[Claude Desktop Integration](./docs/claude-desktop-integration.md)** - Complete setup guide
+- **[Learning Notes](./docs/learning-notes.md)** - MCP concepts and learning
+- **[Progress Tracking](./docs/progress.md)** - Development progress
 
 ## Learning Resources
 
