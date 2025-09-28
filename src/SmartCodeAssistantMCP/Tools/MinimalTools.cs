@@ -7,18 +7,13 @@ namespace SmartCodeAssistantMCP.Tools;
 /// <summary>
 /// Minimal MCP tools for basic .NET project analysis
 /// </summary>
-internal class MinimalTools
+internal class MinimalTools(ILogger<MinimalTools> logger)
 {
-    private readonly ILogger<MinimalTools> _logger;
-
-    public MinimalTools(ILogger<MinimalTools> logger)
-    {
-        _logger = logger;
-    }
+    private readonly ILogger<MinimalTools> _logger = logger;
 
     [McpServerTool]
     [Description("Analyzes a .NET project and returns basic information about its structure.")]
-    public async Task<string> AnalyzeProject(
+    public Task<string> AnalyzeProject(
         [Description("Path to the project file (.csproj) to analyze")] string projectPath)
     {
         try
@@ -40,12 +35,12 @@ internal class MinimalTools
                 }
             };
 
-            return System.Text.Json.JsonSerializer.Serialize(result, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            return Task.FromResult(System.Text.Json.JsonSerializer.Serialize(result, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error analyzing project");
-            return $"Error: {ex.Message}";
+            return Task.FromResult($"Error: {ex.Message}");
         }
     }
 
@@ -79,7 +74,7 @@ internal class MinimalTools
                 AnalysisTimestamp = DateTime.UtcNow,
                 Dependencies = new
                 {
-                    Count = packageReferences.Count,
+                    packageReferences.Count,
                     Packages = packageReferences
                 },
                 Message = $"Found {packageReferences.Count} package references"
@@ -158,7 +153,7 @@ internal class MinimalTools
 
     [McpServerTool]
     [Description("Generates a basic project summary with key metrics.")]
-    public async Task<string> GenerateProjectSummary(
+    public Task<string> GenerateProjectSummary(
         [Description("Path to the project file (.csproj)")] string projectPath)
     {
         try
@@ -183,12 +178,12 @@ internal class MinimalTools
                 Status = "Ready for development"
             };
 
-            return System.Text.Json.JsonSerializer.Serialize(summary, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            return Task.FromResult(System.Text.Json.JsonSerializer.Serialize(summary, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error generating project summary");
-            return $"Error: {ex.Message}";
+            return Task.FromResult($"Error: {ex.Message}");
         }
     }
 }

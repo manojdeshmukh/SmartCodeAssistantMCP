@@ -1,9 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SmartCodeAssistantMCP.Services;
 using SmartCodeAssistantMCP.Tools;
-using SmartCodeAssistantMCP.Resources;
 
 var builder = Host.CreateApplicationBuilder(args);
 

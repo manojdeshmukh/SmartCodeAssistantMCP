@@ -8,16 +8,10 @@ namespace SmartCodeAssistantMCP.Tools;
 /// <summary>
 /// MCP tools for generating documentation from .NET projects
 /// </summary>
-internal class DocumentationTools
+internal class DocumentationTools(DocumentationService documentationService, ILogger<DocumentationTools> logger)
 {
-    private readonly DocumentationService _documentationService;
-    private readonly ILogger<DocumentationTools> _logger;
-
-    public DocumentationTools(DocumentationService documentationService, ILogger<DocumentationTools> logger)
-    {
-        _documentationService = documentationService;
-        _logger = logger;
-    }
+    private readonly DocumentationService _documentationService = documentationService;
+    private readonly ILogger<DocumentationTools> _logger = logger;
 
     [McpServerTool]
     [Description("Auto-generates a comprehensive README.md file for a .NET project or solution, including project overview, structure, dependencies, and API documentation.")]

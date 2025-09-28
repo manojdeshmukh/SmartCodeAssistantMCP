@@ -61,16 +61,16 @@ internal class SimpleAnalysisTools
             {
                 ProjectPath = projectPath,
                 AnalysisTimestamp = DateTime.UtcNow,
-                ProjectName = analysis.ProjectName,
-                TargetFramework = analysis.TargetFramework,
+                analysis.ProjectName,
+                analysis.TargetFramework,
                 PackageReferences = new
                 {
-                    Count = analysis.PackageReferences.Count,
+                    analysis.PackageReferences.Count,
                     Packages = analysis.PackageReferences
                 },
                 ProjectReferences = new
                 {
-                    Count = analysis.ProjectReferences.Count,
+                    analysis.ProjectReferences.Count,
                     References = analysis.ProjectReferences
                 },
                 Summary = $"Found {analysis.PackageReferences.Count} NuGet packages and {analysis.ProjectReferences.Count} project references"
@@ -106,16 +106,16 @@ internal class SimpleAnalysisTools
             {
                 ProjectPath = projectPath,
                 AnalysisTimestamp = DateTime.UtcNow,
-                ProjectName = analysis.ProjectName,
+                analysis.ProjectName,
                 Metrics = new
                 {
                     TotalFiles = analysis.TotalCSharpFiles,
-                    TotalLinesOfCode = analysis.TotalLinesOfCode,
+                    analysis.TotalLinesOfCode,
                     AverageLinesPerFile = analysis.TotalCSharpFiles > 0 ? analysis.TotalLinesOfCode / analysis.TotalCSharpFiles : 0,
-                    TargetFramework = analysis.TargetFramework
+                    analysis.TargetFramework
                 },
                 Recommendations = GenerateQualityRecommendations(analysis),
-                DirectoryStructure = analysis.DirectoryStructure
+                analysis.DirectoryStructure
             };
 
             return System.Text.Json.JsonSerializer.Serialize(qualityReport, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
@@ -146,10 +146,10 @@ internal class SimpleAnalysisTools
 
             var summary = new
             {
-                ProjectName = analysis.ProjectName,
-                ProjectType = analysis.ProjectType,
-                TargetFramework = analysis.TargetFramework,
-                AnalysisTimestamp = analysis.AnalysisTimestamp,
+                analysis.ProjectName,
+                analysis.ProjectType,
+                analysis.TargetFramework,
+                analysis.AnalysisTimestamp,
                 QuickStats = new
                 {
                     CSharpFiles = analysis.TotalCSharpFiles,

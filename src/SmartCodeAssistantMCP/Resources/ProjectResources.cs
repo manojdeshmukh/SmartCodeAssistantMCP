@@ -37,20 +37,20 @@ internal class ProjectResources
             }
 
             // Format as a readable structure overview
-            var structure = new List<string>();
-            structure.Add($"# Project Structure: {Path.GetFileNameWithoutExtension(projectPath)}");
-            structure.Add("");
-            structure.Add($"**Analysis Date**: {analysis.AnalysisTimestamp:yyyy-MM-dd HH:mm:ss} UTC");
-            structure.Add($"**Project Type**: {analysis.ProjectType}");
-            structure.Add("");
-
-            structure.Add("## Overview");
-            structure.Add($"- Total Projects: {analysis.TotalProjects}");
-            structure.Add($"- Total Files: {analysis.TotalDocuments:N0}");
-            structure.Add($"- Total Lines of Code: {analysis.TotalLinesOfCode:N0}");
-            structure.Add("");
-
-            structure.Add("## Projects");
+            var structure = new List<string>
+            {
+                $"# Project Structure: {Path.GetFileNameWithoutExtension(projectPath)}",
+                "",
+                $"**Analysis Date**: {analysis.AnalysisTimestamp:yyyy-MM-dd HH:mm:ss} UTC",
+                $"**Project Type**: {analysis.ProjectType}",
+                "",
+                "## Overview",
+                $"- Total Projects: {analysis.TotalProjects}",
+                $"- Total Files: {analysis.TotalDocuments:N0}",
+                $"- Total Lines of Code: {analysis.TotalLinesOfCode:N0}",
+                "",
+                "## Projects"
+            };
             foreach (var project in analysis.Projects)
             {
                 structure.Add($"### {project.Name}");
@@ -90,11 +90,13 @@ internal class ProjectResources
                 return "Failed to analyze project dependencies";
             }
 
-            var dependencies = new List<string>();
-            dependencies.Add($"# Project Dependencies: {Path.GetFileNameWithoutExtension(projectPath)}");
-            dependencies.Add("");
-            dependencies.Add($"**Analysis Date**: {analysis.AnalysisTimestamp:yyyy-MM-dd HH:mm:ss} UTC");
-            dependencies.Add("");
+            var dependencies = new List<string>
+            {
+                $"# Project Dependencies: {Path.GetFileNameWithoutExtension(projectPath)}",
+                "",
+                $"**Analysis Date**: {analysis.AnalysisTimestamp:yyyy-MM-dd HH:mm:ss} UTC",
+                ""
+            };
 
             // Collect all unique dependencies
             var allDependencies = analysis.Projects
