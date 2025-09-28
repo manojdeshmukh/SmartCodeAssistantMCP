@@ -1,0 +1,58 @@
+{
+  "name": "SmartCodeAssistantMCP",
+  "version": "0.1.0-beta",
+  "description": "A Smart Code Assistant MCP server for .NET development with code analysis and documentation tools",
+  "author": "Smart Code Assistant Team",
+  "license": "MIT",
+  "homepage": "https://github.com/your-org/SmartCodeAssistantMCP",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/SmartCodeAssistantMCP.git"
+  },
+  "keywords": [
+    "mcp",
+    "server",
+    "code-analysis",
+    ".net",
+    "csharp",
+    "documentation",
+    "ai-assistant"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "logging": true
+  },
+  "tools": [
+    {
+      "name": "analyze_project",
+      "description": "Analyze .NET solution structure and provide insights"
+    },
+    {
+      "name": "find_dependencies",
+      "description": "Discover and analyze NuGet dependencies"
+    },
+    {
+      "name": "check_code_quality",
+      "description": "Perform basic code quality checks"
+    },
+    {
+      "name": "generate_readme",
+      "description": "Auto-generate project README documentation"
+    },
+    {
+      "name": "extract_api_docs",
+      "description": "Extract API documentation from code"
+    }
+  ],
+  "resources": [
+    {
+      "name": "project://structure",
+      "description": "Access to project file structure and organization"
+    },
+    {
+      "name": "project://dependencies",
+      "description": "Access to project dependencies and package information"
+    }
+  ]
+}
